@@ -23,12 +23,10 @@ func testLoad(client *graphql.Client, query, name string, numTest int) {
 	start := time.Now()
 
 	var wg sync.WaitGroup
-	rateLimiter := time.Tick(10 * time.Millisecond) // 100 requests per second
 
 	for i := 0; i < numTest; i++ {
-		<-rateLimiter
 		wg.Add(1)
-		go func(i int) {
+		func(i int) {
 			defer wg.Done()
 			req := graphql.NewRequest(query)
 			ctx := context.Background()

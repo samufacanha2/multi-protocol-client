@@ -20,7 +20,7 @@ func testLoad(client interface{}, method string, args interface{}, name string, 
 	var wg sync.WaitGroup
 	for i := 0; i < numTest; i++ {
 		wg.Add(1)
-		go func() {
+		func() {
 			defer wg.Done()
 			switch method {
 			case "LerUsuarios":
