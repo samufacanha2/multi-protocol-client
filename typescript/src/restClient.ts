@@ -11,14 +11,20 @@ const endpoints = {
   playlists: "/playlists",
 };
 
+async function sendRequest(url: string, i: number) {
+  try {
+    await axios.get(url);
+  } catch (error: any) {
+    console.error(`Request ${i} to ${url} failed: ${error.message}`);
+  }
+}
+
 async function testLoad(endpoint: string, name: string, numTest: number) {
   const url = `${baseURL}${endpoint}`;
   const start = performance.now();
 
   for (let i = 0; i < numTest; i++) {
-    await axios
-      .get(url)
-      .catch((error) => console.error(`Error: ${error.message}`));
+    await sendRequest(url, i);
   }
 
   const end = performance.now();

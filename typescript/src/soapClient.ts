@@ -1,7 +1,7 @@
 import * as soap from "soap";
 import { performance } from "perf_hooks";
 
-const baseURL = "http://127.0.0.1:5001/wsdl?wsdl"; // URL do WSDL do serviço SOAP
+const baseURL = "http://127.0.0.1:5001/wsdl?wsdl"; // URL of the WSDL of the SOAP service
 const testCounts = [100, 200, 300];
 
 const soapClient = async () => {
@@ -13,6 +13,24 @@ const soapClient = async () => {
   });
 };
 
+async function sendRequest(
+  client: soap.Client,
+  method: string,
+  args: object,
+  i: number
+) {
+  return new Promise<void>((resolve, reject) => {
+    client[method](args, (err: any, result: any) => {
+      if (err) {
+        console.error(`Request ${i} failed: ${err.message}`);
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+}
+
 async function testLoad(
   client: soap.Client,
   method: string,
@@ -23,16 +41,7 @@ async function testLoad(
   const start = performance.now();
 
   for (let i = 0; i < numTest; i++) {
-    await new Promise<void>((resolve, reject) => {
-      client[method](args, (err: any, result: any) => {
-        if (err) {
-          console.error(`Error: ${err.message}`);
-          reject(err);
-        } else {
-          resolve(result);
-        }
-      });
-    });
+    await sendRequest(client, method, args, i);
   }
 
   const end = performance.now();
