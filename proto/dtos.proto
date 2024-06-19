@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package musica_app;
+
+option go_package = "./;proto";
+
+service UsuarioService {
+    rpc CriarUsuario (Usuario) returns (Resposta);
+    rpc LerUsuario (UsuarioID) returns (Usuario);
+    rpc AtualizarUsuario (Usuario) returns (Resposta);
+    rpc DeletarUsuario (UsuarioID) returns (Resposta);
+    rpc LerUsuarios (Empty) returns (UsuarioList);
+}
+
+service MusicaService {
+    rpc CriarMusica (Musica) returns (Resposta);
+    rpc LerMusica (MusicaID) returns (Musica);
+    rpc AtualizarMusica (Musica) returns (Resposta);
+    rpc DeletarMusica (MusicaID) returns (Resposta);
+    rpc LerMusicas (Empty) returns (MusicaList);
+}
+
+service PlaylistService {
+    rpc CriarPlaylist (Playlist) returns (Resposta);
+    rpc ListarPlaylistsPorUsuario (UsuarioID) returns (PlaylistList);
+    rpc ListarMusicasPorPlaylist (PlaylistID) returns (MusicaList);
+    rpc ListarPlaylistsPorMusica (MusicaID) returns (PlaylistList);
+    rpc LerPlaylist (PlaylistID) returns (Playlist);
+    rpc LerPlaylists (Empty) returns (PlaylistList);
+    rpc AtualizarPlaylist (Playlist) returns (Resposta);
+    rpc DeletarPlaylist (PlaylistID) returns (Resposta);
+}
+
+message Usuario {
+    int32 ID = 1;
+    string nome = 2;
+    int32 idade = 3;
+    repeated int32 playlists = 4;
+}
+
+message Musica {
+    int32 ID = 1;
+    string nome = 2;
+    string artista = 3;
+}
+
+message Playlist {
+    int32 ID = 1;
+    int32 usuario_id = 2;
+    repeated int32 musicas = 3;
+}
+
+message UsuarioID {
+    int32 ID = 1;
+}
+
+message MusicaID {
+    int32 ID = 1;
+}
+
+message PlaylistID {
+    int32 ID = 1;
+}
+
+message Resposta {
+    string message = 1;
+}
+
+message Empty {}
+
+message UsuarioList {
+    repeated Usuario usuarios = 1;
+}
+
+message MusicaList {
+    repeated Musica musicas = 1;
+}
+
+message PlaylistList {
+    repeated Playlist playlists = 1;
+}

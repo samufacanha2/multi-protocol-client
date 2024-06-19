@@ -14,9 +14,24 @@ var testCounts = []int{100, 200, 300}
 const baseURL = "http://localhost:5001/soap"
 
 var soapActions = map[string]string{
-	"usuarios":  `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mus="http://musica.app/"><soapenv:Header/><soapenv:Body><mus:UsuariosRequest/></soapenv:Body></soapenv:Envelope>`,
-	"musicas":   `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mus="http://musica.app/"><soapenv:Header/><soapenv:Body><mus:MusicasRequest/></soapenv:Body></soapenv:Envelope>`,
-	"playlists": `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mus="http://musica.app/"><soapenv:Header/><soapenv:Body><mus:PlaylistsRequest/></soapenv:Body></soapenv:Envelope>`,
+	"Usuarios": `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.flask">
+                   <soapenv:Header/>
+                   <soapenv:Body>
+                     <spy:ler_usuarios/>
+                   </soapenv:Body>
+                 </soapenv:Envelope>`,
+	"Musicas": `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.flask">
+                  <soapenv:Header/>
+                  <soapenv:Body>
+                    <spy:ler_musicas/>
+                  </soapenv:Body>
+                </soapenv:Envelope>`,
+	"Playlists": `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.flask">
+                    <soapenv:Header/>
+                    <soapenv:Body>
+                      <spy:ler_playlists/>
+                    </soapenv:Body>
+                  </soapenv:Envelope>`,
 }
 
 func testLoad(action, name string, numTest int) {

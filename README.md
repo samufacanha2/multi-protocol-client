@@ -1,10 +1,10 @@
 # Load Test Clients
 
-This repository contains load test clients for gRPC, REST, SOAP, and GraphQL services implemented in Go, Rust, and TypeScript.
+This repository contains load test clients for gRPC, REST, SOAP, and GraphQL services implemented in Go, Rust, TypeScript, and Python.
 
 ## Server
 
-You will find more info on how to run the server in [this github repository.](https://github.com/samufacanha2/multi-protocol-db) (https://github.com/samufacanha2/multi-protocol-db)
+You will find more info on how to run the server in [this GitHub repository.](https://github.com/samufacanha2/multi-protocol-db)
 
 ## How Load Tests Are Made
 
@@ -69,7 +69,7 @@ protoc --go_out=. --go-grpc_out=. ./proto/dtos.proto
 1. **Navigate to the TypeScript directory:**
 
    ```sh
-   cd typescript
+   cd ts
    ```
 
 2. **Install Dependencies:**
@@ -83,6 +83,26 @@ protoc --go_out=. --go-grpc_out=. ./proto/dtos.proto
    npm run start
    ```
 
+### Python Clients
+
+1. **Navigate to the Python directory:**
+
+   ```sh
+   cd python
+   ```
+
+2. **Install Dependencies:**
+
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+3. **Run the Clients:**
+
+   ```sh
+   python main.py
+   ```
+
 ## Running Load Tests
 
-Each client implementation (Go, Rust, TypeScript) has its own main file to run load tests for gRPC, REST, SOAP, and GraphQL services. Follow the setup instructions for each language to build and run the clients.
+Each client implementation (Go, Rust, TypeScript, Python) has its own main file to run load tests for gRPC, REST, SOAP, and GraphQL services. Follow the setup instructions for each language to build and run the clients.

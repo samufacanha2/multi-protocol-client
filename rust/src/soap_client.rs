@@ -6,15 +6,30 @@ const BASE_URL: &str = "http://localhost:5001/soap";
 const SOAP_ACTIONS: &[(&str, &str)] = &[
     (
         "Usuarios",
-        r#"<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mus="http://musica.app/"><soapenv:Header/><soapenv:Body><mus:UsuariosRequest/></soapenv:Body></soapenv:Envelope>"#,
+        r#"<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.flask">
+                       <soapenv:Header/>
+                       <soapenv:Body>
+                         <spy:ler_usuarios/>
+                       </soapenv:Body>
+                     </soapenv:Envelope>"#,
     ),
     (
         "Musicas",
-        r#"<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mus="http://musica.app/"><soapenv:Header/><soapenv:Body><mus:MusicasRequest/></soapenv:Body></soapenv:Envelope>"#,
+        r#"<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.flask">
+                      <soapenv:Header/>
+                      <soapenv:Body>
+                        <spy:ler_musicas/>
+                      </soapenv:Body>
+                    </soapenv:Envelope>"#,
     ),
     (
         "Playlists",
-        r#"<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mus="http://musica.app/"><soapenv:Header/><soapenv:Body><mus:PlaylistsRequest/></soapenv:Body></soapenv:Envelope>"#,
+        r#"<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spy="spyne.examples.flask">
+                        <soapenv:Header/>
+                        <soapenv:Body>
+                          <spy:ler_playlists/>
+                        </soapenv:Body>
+                      </soapenv:Envelope>"#,
     ),
 ];
 
