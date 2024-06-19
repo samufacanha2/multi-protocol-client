@@ -1,0 +1,20 @@
+type Usuario {
+  ID: ID!
+  nome: String!
+}
+
+type Musica {
+  ID: ID!
+  nome: String!
+}
+
+type Playlist {
+  ID: ID!
+  nome: String!
+}
+
+type Query {
+  usuarios: [Usuario!]!
+  musicas: [Musica!]!
+  playlists: [Playlist!]!
+}

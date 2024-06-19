@@ -66,8 +66,8 @@ func RunTests() {
 	for _, numTest := range testCounts {
 		fmt.Printf("Running tests with %d requests:\n", numTest)
 
-		testLoad(clientUsuario, "LerUsuarios", &proto.Empty{}, "Ler Usuários", numTest)
-		testLoad(clientMusica, "LerMusicas", &proto.Empty{}, "Ler Músicas", numTest)
-		testLoad(clientPlaylist, "LerPlaylists", &proto.Empty{}, "Listar Playlists", numTest)
+		testLoad(clientUsuario, "LerUsuarios", &proto.Empty{}, "Usuarios", numTest)
+		testLoad(clientMusica, "LerMusicas", &proto.Empty{}, "Musicas", numTest)
+		testLoad(clientPlaylist, "LerPlaylists", &proto.Empty{}, "Playlists", numTest)
 	}
 }

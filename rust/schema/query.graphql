@@ -1,0 +1,20 @@
+query Usuarios {
+  usuarios {
+    ID
+    nome
+  }
+}
+
+query Musicas {
+  musicas {
+    ID
+    nome
+  }
+}
+
+query Playlists {
+  playlists {
+    ID
+    nome
+  }
+}
