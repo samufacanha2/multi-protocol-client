@@ -38,7 +38,7 @@ pub async fn run_tests() -> Result<(), Box<dyn std::error::Error>> {
     let test_counts = vec![100, 200, 300];
 
     for &count in &test_counts {
-        println!("Running tests with {} requests:", count);
+        println!("{} requests:", count);
         for &(name, action) in SOAP_ACTIONS {
             let start = Instant::now();
             for _ in 0..count {
@@ -53,10 +53,7 @@ pub async fn run_tests() -> Result<(), Box<dyn std::error::Error>> {
                 }
             }
             let duration = start.elapsed();
-            println!(
-                "{} load test with {} requests completed in {:.2?} seconds",
-                name, count, duration
-            );
+            println!("{} : {:.6?} seconds", name, duration.as_secs_f64());
         }
     }
 

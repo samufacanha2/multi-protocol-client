@@ -4,21 +4,21 @@ import { runTests as soapRunTests } from "./soapClient";
 import { runTests as grpcRunTests } from "./grpcClient";
 
 async function runTests() {
-  console.log("Starting load tests for REST client...");
+  console.log("REST");
   await restRunTests();
-  console.log("REST client tests completed.\n");
+  console.log("\n");
 
-  console.log("Starting load tests for GraphQL client...");
+  console.log("GraphQL");
   await graphqlRunTests();
-  console.log("GraphQL client tests completed.\n");
+  console.log("\n");
 
-  console.log("Starting load tests for SOAP client...");
+  console.log("SOAP");
   await soapRunTests();
-  console.log("SOAP client tests completed.\n");
+  console.log("\n");
 
-  console.log("Starting load tests for gRPC client...");
+  console.log("gRPC");
   await grpcRunTests();
-  console.log("gRPC client tests completed.\n");
+  console.log("\n");
 }
 
 runTests();

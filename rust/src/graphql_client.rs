@@ -1,4 +1,4 @@
-use graphql_client::{GraphQLQuery, Response};
+use graphql_client::GraphQLQuery;
 use reqwest::Client;
 use std::time::Instant;
 
@@ -33,7 +33,7 @@ pub async fn run_tests() -> Result<(), Box<dyn std::error::Error>> {
     let test_counts = vec![100, 200, 300];
 
     for &count in &test_counts {
-        println!("Running tests with {} requests:", count);
+        println!("{} requests:", count);
 
         let start = Instant::now();
         for _ in 0..count {
@@ -47,10 +47,7 @@ pub async fn run_tests() -> Result<(), Box<dyn std::error::Error>> {
             }
         }
         let duration = start.elapsed();
-        println!(
-            "Usuarios load test with {} requests completed in {:.2?} seconds",
-            count, duration
-        );
+        println!("Usuarios : {:.6} seconds", duration.as_secs_f64());
 
         let start = Instant::now();
         for _ in 0..count {
@@ -64,10 +61,7 @@ pub async fn run_tests() -> Result<(), Box<dyn std::error::Error>> {
             }
         }
         let duration = start.elapsed();
-        println!(
-            "Musicas load test with {} requests completed in {:.2?} seconds",
-            count, duration
-        );
+        println!("Musicas : {:.6} seconds", duration.as_secs_f64());
 
         let start = Instant::now();
         for _ in 0..count {
@@ -81,10 +75,7 @@ pub async fn run_tests() -> Result<(), Box<dyn std::error::Error>> {
             }
         }
         let duration = start.elapsed();
-        println!(
-            "Playlists load test with {} requests completed in {:.2?} seconds",
-            count, duration
-        );
+        println!("Playlists : {:.6} seconds", duration.as_secs_f64());
     }
 
     Ok(())

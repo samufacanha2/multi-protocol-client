@@ -45,18 +45,14 @@ async function testLoad(
   }
 
   const end = performance.now();
-  console.log(
-    `${name} load test with ${numTest} requests completed in ${
-      (end - start) / 1000
-    } seconds`
-  );
+  console.log(`${name} : ${(end - start) / 1000} seconds`);
 }
 
 export async function runTests() {
   const client = await soapClient();
 
   for (let numTest of testCounts) {
-    console.log(`Running tests with ${numTest} requests:`);
+    console.log(`${numTest} requests:`);
 
     await testLoad(client, "ler_usuarios", {}, "Usuarios", numTest);
 

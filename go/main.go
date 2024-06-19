@@ -9,19 +9,19 @@ import (
 )
 
 func main() {
-	fmt.Println("Starting load tests for REST client...")
+	fmt.Println("REST")
 	restclient.RunTests()
-	fmt.Println("REST client tests completed.")
+	fmt.Println("")
 
-	fmt.Println("Starting load tests for GraphQL client...")
+	fmt.Println("GraphQL")
 	graphqlclient.RunTests()
-	fmt.Println("GraphQL client tests completed.")
+	fmt.Println("")
 
-	fmt.Println("Starting load tests for SOAP client...")
+	fmt.Println("SOAP")
 	soapclient.RunTests()
-	fmt.Println("SOAP client tests completed.")
+	fmt.Println("")
 
-	fmt.Println("Starting load tests for gRPC client...")
+	fmt.Println("gRPC")
 	grpcclient.RunTests()
-	fmt.Println("gRPC client tests completed.")
+	fmt.Println("")
 }

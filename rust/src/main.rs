@@ -5,21 +5,21 @@ mod soap_client;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    println!("Starting load tests for REST client...");
+    println!("REST");
     rest_client::run_tests().await?;
-    println!("REST client tests completed.\n");
+    println!("");
 
-    println!("Starting load tests for GraphQL client...");
+    println!("GraphQL");
     graphql_client::run_tests().await?;
-    println!("GraphQL client tests completed.\n");
+    println!("");
 
-    println!("Starting load tests for SOAP client...");
+    println!("SOAP");
     soap_client::run_tests().await?;
-    println!("SOAP client tests completed.\n");
+    println!("");
 
-    println!("Starting load tests for gRPC client...");
+    println!("gRPC");
     grpc_client::run_tests().await?;
-    println!("gRPC client tests completed.\n");
+    println!("");
 
     Ok(())
 }

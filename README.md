@@ -69,7 +69,7 @@ protoc --go_out=. --go-grpc_out=. ./proto/dtos.proto
 1. **Navigate to the TypeScript directory:**
 
    ```sh
-   cd ts
+   cd typescript
    ```
 
 2. **Install Dependencies:**

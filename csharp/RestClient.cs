@@ -26,28 +26,31 @@ public class RestClient
 
     public async Task RunTests()
     {
-        Console.WriteLine("Running REST tests...");
-
         var endpoints = new[] { "usuarios", "musicas", "playlists" };
         var numTests = new[] { 100, 200, 300 };
 
         foreach (var numTest in numTests)
         {
-            var start = DateTime.Now;
-            Console.WriteLine($"Running tests with {numTest} requests:");
-
+            Console.WriteLine($"{numTest} requests:");
             foreach (var endpoint in endpoints)
             {
+                var start = DateTime.Now;
+
                 for (int i = 0; i < numTest; i++)
                 {
                     await SendRequestAsync(endpoint, i);
                 }
-            }
 
-            var end = DateTime.Now;
-            Console.WriteLine(
-                $"REST tests with {numTest} requests completed in {(end - start).TotalSeconds} seconds"
-            );
+                var end = DateTime.Now;
+                Console.WriteLine($"{Capitalize(endpoint)} : {(end - start).TotalSeconds} seconds");
+            }
         }
+    }
+
+    private string Capitalize(string s)
+    {
+        if (string.IsNullOrEmpty(s))
+            return s;
+        return char.ToUpper(s[0]) + s.Substring(1);
     }
 }

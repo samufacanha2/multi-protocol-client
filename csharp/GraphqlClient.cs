@@ -29,8 +29,6 @@ public class GraphqlClient
 
     public async Task RunTests()
     {
-        Console.WriteLine("Running GraphQL tests...");
-
         var queries = new[]
         {
             new { Name = "Usuarios", Query = "{ usuarios { ID nome } }" },
@@ -42,23 +40,20 @@ public class GraphqlClient
 
         foreach (var numTest in numTests)
         {
-            var start = DateTime.Now;
-            Console.WriteLine($"Running tests with {numTest} requests:");
-
+            Console.WriteLine($"{numTest} requests:");
             foreach (var query in queries)
             {
                 var request = new GraphQLHttpRequest(query.Query);
+                var start = DateTime.Now;
 
                 for (int i = 0; i < numTest; i++)
                 {
                     await SendRequestAsync(request, i);
                 }
-            }
 
-            var end = DateTime.Now;
-            Console.WriteLine(
-                $"GraphQL tests with {numTest} requests completed in {(end - start).TotalSeconds} seconds"
-            );
+                var end = DateTime.Now;
+                Console.WriteLine($"{query.Name} : {(end - start).TotalSeconds} seconds");
+            }
         }
     }
 }

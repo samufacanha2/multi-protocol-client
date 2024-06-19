@@ -21,14 +21,12 @@ def test_load(query, name, num_test):
             print(f"Request {i} failed: {e}")
 
     end = time.time()
-    print(
-        f"{name} load test with {num_test} requests completed in {end - start:.6f} seconds"
-    )
+    print(f"{name.capitalize()} : {end - start:.6f} seconds")
 
 
 def run_tests():
     for num_test in TEST_COUNTS:
-        print(f"Running tests with {num_test} requests:")
+        print(f"{num_test} requests:")
         for name, query in QUERIES.items():
             test_load(query, name, num_test)
 

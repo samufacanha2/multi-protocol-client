@@ -1,8 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Grpc.Core;
 using Grpc.Net.Client;
-using MusicaApp; // Replace with the actual namespace generated from your .proto file
+using MusicaApp;
 
 public class GrpcClient
 {
@@ -33,33 +32,38 @@ public class GrpcClient
 
     public async Task RunTests()
     {
-        Console.WriteLine("Running gRPC tests...");
-
         var empty = new Empty();
         var numTests = new[] { 100, 200, 300 };
 
         foreach (var numTest in numTests)
         {
-            var start = DateTime.Now;
-            Console.WriteLine($"Running tests with {numTest} requests:");
-
-            for (int i = 0; i < numTest; i++)
+            Console.WriteLine($"{numTest} requests:");
+            foreach (var endpoint in new[] { "Usuarios", "Musicas", "Playlists" })
             {
-                await SendRequestAsync(
-                    () => _usuarioClient.LerUsuariosAsync(empty).ResponseAsync,
-                    i
-                );
-                await SendRequestAsync(() => _musicaClient.LerMusicasAsync(empty).ResponseAsync, i);
-                await SendRequestAsync(
-                    () => _playlistClient.LerPlaylistsAsync(empty).ResponseAsync,
-                    i
-                );
-            }
+                var start = DateTime.Now;
 
-            var end = DateTime.Now;
-            Console.WriteLine(
-                $"gRPC tests with {numTest} requests completed in {(end - start).TotalSeconds} seconds"
-            );
+                for (int i = 0; i < numTest; i++)
+                {
+                    if (endpoint == "Usuarios")
+                        await SendRequestAsync(
+                            () => _usuarioClient.LerUsuariosAsync(empty).ResponseAsync,
+                            i
+                        );
+                    else if (endpoint == "Musicas")
+                        await SendRequestAsync(
+                            () => _musicaClient.LerMusicasAsync(empty).ResponseAsync,
+                            i
+                        );
+                    else if (endpoint == "Playlists")
+                        await SendRequestAsync(
+                            () => _playlistClient.LerPlaylistsAsync(empty).ResponseAsync,
+                            i
+                        );
+                }
+
+                var end = DateTime.Now;
+                Console.WriteLine($"{endpoint} : {(end - start).TotalSeconds} seconds");
+            }
         }
     }
 }

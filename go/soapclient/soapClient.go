@@ -66,12 +66,12 @@ func testLoad(action, name string, numTest int) {
 	wg.Wait()
 
 	end := time.Now()
-	fmt.Printf("%s load test with %d requests completed in %v seconds\n", name, numTest, end.Sub(start).Seconds())
+	fmt.Printf("%s : %v seconds\n", name, end.Sub(start).Seconds())
 }
 
 func RunTests() {
 	for _, numTest := range testCounts {
-		fmt.Printf("Running tests with %d requests:\n", numTest)
+		fmt.Printf("%d requests:\n", numTest)
 		testLoad(soapActions["usuarios"], "Usuarios", numTest)
 		testLoad(soapActions["musicas"], "Musicas", numTest)
 		testLoad(soapActions["playlists"], "Playlists", numTest)

@@ -40,14 +40,12 @@ def test_load(action, name, num_test):
                 print(f"Response content: {response.content}")
 
     end = time.time()
-    print(
-        f"{name} load test with {num_test} requests completed in {end - start:.6f} seconds"
-    )
+    print(f"{name} : {end - start:.6f} seconds")
 
 
 def run_tests():
     for num_test in TEST_COUNTS:
-        print(f"Running tests with {num_test} requests:")
+        print(f"{num_test} requests:")
         for name, action in SOAP_ACTIONS.items():
             test_load(action, name, num_test)
 

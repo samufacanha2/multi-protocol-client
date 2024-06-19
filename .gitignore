@@ -1,8 +1,15 @@
 build/
+
 target/
+
 dist/
+
 node_modules/
+
 obj/
 bin/
+
 __pycache__/
+out/
+
 .DS_Store

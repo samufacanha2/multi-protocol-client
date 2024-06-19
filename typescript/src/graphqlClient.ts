@@ -41,16 +41,12 @@ async function testLoad(query: any, name: string, numTest: number) {
   }
 
   const end = performance.now();
-  console.log(
-    `${name} load test with ${numTest} requests completed in ${
-      (end - start) / 1000
-    } seconds`
-  );
+  console.log(`${name} : ${(end - start) / 1000} seconds`);
 }
 
 export async function runTests() {
   for (let numTest of testCounts) {
-    console.log(`Running tests with ${numTest} requests:`);
+    console.log(`${numTest} requests:`);
     await testLoad(queries.usuarios, "Usuarios", numTest);
     await testLoad(queries.musicas, "Musicas", numTest);
     await testLoad(queries.playlists, "Playlists", numTest);

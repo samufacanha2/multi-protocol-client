@@ -49,7 +49,7 @@ func testLoad(client interface{}, method string, args interface{}, name string, 
 	wg.Wait()
 
 	end := time.Now()
-	fmt.Printf("%s load test with %d requests completed in %v seconds\n", name, numTest, end.Sub(start).Seconds())
+	fmt.Printf("%s : %v seconds\n", name, end.Sub(start).Seconds())
 }
 
 func RunTests() {
@@ -64,7 +64,7 @@ func RunTests() {
 	clientPlaylist := proto.NewPlaylistServiceClient(conn)
 
 	for _, numTest := range testCounts {
-		fmt.Printf("Running tests with %d requests:\n", numTest)
+		fmt.Printf("%d requests:\n", numTest)
 
 		testLoad(clientUsuario, "LerUsuarios", &proto.Empty{}, "Usuarios", numTest)
 		testLoad(clientMusica, "LerMusicas", &proto.Empty{}, "Musicas", numTest)

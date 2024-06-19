@@ -5,21 +5,21 @@ from clients.grpc_client import run_tests as grpc_run_tests
 
 
 def run_tests():
-    print("Starting load tests for REST client...")
+    print("REST")
     rest_run_tests()
-    print("REST client tests completed.\n")
+    print("\n")
 
-    print("Starting load tests for GraphQL client...")
+    print("GraphQL")
     graphql_run_tests()
-    print("GraphQL client tests completed.\n")
+    print("\n")
 
-    print("Starting load tests for SOAP client...")
+    print("SOAP")
     soap_run_tests()
-    print("SOAP client tests completed.\n")
+    print("\n")
 
-    print("Starting load tests for gRPC client...")
+    print("gRPC")
     grpc_run_tests()
-    print("gRPC client tests completed.\n")
+    print("\n")
 
 
 if __name__ == "__main__":

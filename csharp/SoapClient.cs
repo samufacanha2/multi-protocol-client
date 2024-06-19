@@ -28,8 +28,6 @@ public class SoapClient
 
     public async Task RunTests()
     {
-        Console.WriteLine("Running SOAP tests...");
-
         var soapActions = new[]
         {
             new
@@ -53,21 +51,19 @@ public class SoapClient
 
         foreach (var numTest in numTests)
         {
-            var start = DateTime.Now;
-            Console.WriteLine($"Running tests with {numTest} requests:");
-
+            Console.WriteLine($"{numTest} requests:");
             foreach (var soapAction in soapActions)
             {
+                var start = DateTime.Now;
+
                 for (int i = 0; i < numTest; i++)
                 {
                     await SendRequestAsync(soapAction.Action, i);
                 }
-            }
 
-            var end = DateTime.Now;
-            Console.WriteLine(
-                $"SOAP tests with {numTest} requests completed in {(end - start).TotalSeconds} seconds"
-            );
+                var end = DateTime.Now;
+                Console.WriteLine($"{soapAction.Name} : {(end - start).TotalSeconds} seconds");
+            }
         }
     }
 }

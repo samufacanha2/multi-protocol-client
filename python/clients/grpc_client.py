@@ -16,9 +16,7 @@ def test_load(method, name, num_test):
             print(f"Request {i} failed: {e}")
 
     end = time.time()
-    print(
-        f"{name} load test with {num_test} requests completed in {end - start:.6f} seconds"
-    )
+    print(f"{name} : {end - start:.6f} seconds")
 
 
 def run_tests():
@@ -28,7 +26,7 @@ def run_tests():
     playlist_stub = dtos_pb2_grpc.PlaylistServiceStub(channel)
 
     for num_test in TEST_COUNTS:
-        print(f"Running tests with {num_test} requests:")
+        print(f"{num_test} requests:")
         test_load(usuario_stub.LerUsuarios, "Usuarios", num_test)
         test_load(musica_stub.LerMusicas, "Musicas", num_test)
         test_load(playlist_stub.LerPlaylists, "Playlists", num_test)
