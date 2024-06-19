@@ -103,6 +103,43 @@ protoc --go_out=. --go-grpc_out=. ./proto/dtos.proto
    python main.py
    ```
 
+**Optional: Generate Protobuf Files**
+
+If you need to regenerate the protobuf files, ensure your `.proto` files are in the correct directory and then run the following command:
+
+```sh
+python -m grpc_tools.protoc -I./proto --python_out=. --grpc_python_out=. ./proto/dtos.proto
+```
+
+> Also check if the imports in the generated files are correct.
+
+### C# Clients
+
+1. **Navigate to the C# directory:**
+
+   ```sh
+   cd csharp
+   ```
+
+2. **Install Dependencies:**
+
+   The dependencies will be restored when you build the project.
+
+3. **Build and Run:**
+
+   ```sh
+   dotnet build
+   dotnet run
+   ```
+
+**Optional: Generate Protobuf Files**
+
+If you need to regenerate the protobuf files, ensure your `.proto` files are in the correct directory and then build the project:
+
+```sh
+dotnet build
+```
+
 ## Running Load Tests
 
 Each client implementation (Go, Rust, TypeScript, Python) has its own main file to run load tests for gRPC, REST, SOAP, and GraphQL services. Follow the setup instructions for each language to build and run the clients.
